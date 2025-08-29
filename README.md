@@ -15,7 +15,7 @@ Neste espaço, você encontrará algoritmos clássicos, projetos práticos e out
 
   * Caminho euleriano e hamiltoniano
 
-Além das implementações em C dos algoritmos, este repositório também inclui visualizações interativas em Python que demonstram o funcionamento dos algoritmos de Prim e Kruskal:
+Além das implementações em C dos algoritmos, este repositório também inclui visualizações interativas em Python que demonstram o funcionamento dos algoritmos como por exemplo os algoritmos de Prim e Kruskal:
 
 ![Image](https://github.com/user-attachments/assets/61076b20-8727-46cd-8e3e-33e9091c7cfd)
 
