@@ -1,16 +1,13 @@
-# Árvore Geradora Mínima (AGM) - Abordagem Gulosa
+# Árvore Geradora Mínima (AGM) - Abordagem Gulosa Detalhada
 
-## 📌 Definição do Problema
+## Contexto Teórico
 
-**Entrada**: Um grafo conexo não dirigido \( G = (V, E) \) com função peso \( \omega : E \rightarrow \mathbb{R} \)
+O problema da **árvore geradora mínima** (AGM) é um dos problemas fundamentais da teoria dos grafos e otimização combinatória. Dado um grafo conexo não dirigido \( G = (V, E) \) com função peso \( \omega : E \rightarrow \mathbb{R} \), busca-se encontrar uma árvore que conecte todos os vértices com o menor peso total possível.
 
-**Objetivo**: Encontrar uma árvore geradora mínima (conjunto de arestas que conecta todos os vértices com peso total mínimo)
 
----
+## Estratégia Gulosa: AGM-GENÉRICA
 
-## 🎯 Estratégia Gulosa - AGM-Genérica
-
-### Algoritmo Base:
+### Pseudocódigo Expandido:
 ```python
 AGM-GENÉRICA(G, w)
 1   A = Ø
@@ -20,54 +17,61 @@ AGM-GENÉRICA(G, w)
 5   return A
 ```
 
-### Invariante Fundamental:
-**Antes de cada iteração**, \( A \) é subconjunto de alguma árvore geradora mínima.
+### Análise do Invariante de Laço:
 
----
+**Invariante**: Antes de cada iteração, \( A \) é subconjunto de alguma árvore geradora mínima.
 
-## 🔍 Conceitos Fundamentais
+- **Inicialização** (Linha 1): \( A = \emptyset \) trivialmente satisfaz o invariante.
+- **Manutenção** (Linhas 2-4): A adição de uma aresta **segura** preserva o invariante.
+- **Término** (Linha 5): Quando \( A \) forma uma árvore geradora, ela é mínima.
+
+
+## Definições Formais
 
 ### Corte (S, V-S)
-- Partição dos vértices V em dois subconjuntos S e V-S
-- **Aresta cruza o corte**: se um extremo está em S e outro em V-S
+Um **corte** \( (S, V-S) \) é uma partição do conjunto de vértices \( V \) em dois subconjuntos disjuntos \( S \) e \( V-S \).
+
+### Aresta que Cruza um Corte
+Uma aresta \( (u, v) \) **cruza** o corte \( (S, V-S) \) se:
+\[ u \in S \quad \text{e} \quad v \in V-S \quad \text{ou vice-versa} \]
 
 ### Corte que Respeita A
-- Nenhuma aresta de A cruza o corte
+Um corte \( (S, V-S) \) **respeita** um conjunto de arestas \( A \) se nenhuma aresta em \( A \) cruza o corte.
 
 ### Aresta Leve
-- Aresta de **peso mínimo** que cruza um corte
-- Pode haver múltiplas arestas leves (em caso de empates)
+Uma aresta é **leve** que cruza um corte se seu peso é mínimo entre todas as arestas que cruzam esse corte.
 
----
 
 ## 🛡️ Teorema da Aresta Segura
 
-**Uma aresta (u, v) é segura para A se:**
-1. Existe um corte (S, V-S) que **respeita A**
-2. (u, v) é uma **aresta leve** que cruza esse corte
+**Teorema**: Seja \( G = (V, E) \) um grafo conexo não dirigido com função peso \( \omega \), seja \( A \) um subconjunto de arestas contido em alguma AGM de \( G \), seja \( (S, V-S) \) um corte que respeita \( A \), e seja \( (u, v) \) uma aresta leve que cruza \( (S, V-S) \). Então, \( (u, v) \) é **segura** para \( A \).
 
-### Por que funciona?
-- Se A está contido em alguma AGM T
-- E (u, v) é aresta leve cruzando corte que respeita A
-- Então (u, v) pertence a T (ou a alguma AGM alternativa)
+### Prova (Esboço):
+1. Seja \( T \) uma AGM que contém \( A \).
+2. Se \( (u, v) \in T \), a prova está completa.
+3. Caso contrário, \( T \cup \{(u, v)\} \) contém um ciclo.
+4. Existe outra aresta \( (x, y) \) no ciclo que cruza o corte \( (S, V-S) \).
+5. Como \( (u, v) \) é leve, \( \omega(u, v) \leq \omega(x, y) \).
+6. Substituindo \( (x, y) \) por \( (u, v) \) em \( T \), obtemos outra AGM \( T' \) que contém \( A \cup \{(u, v)\} \).
 
----
 
-## 🧠 Como os Algoritmos Usam Isso
+## Implementações Práticas
 
-### Algoritmo de Prim:
-- Mantém **uma árvore** que cresce gradualmente
-- Corte: vértices na árvore × vértices fora
-- Aresta segura: aresta de peso mínimo conectando a árvore ao resto
+### Algoritmo de Prim
+- **Estratégia**: Mantém uma única árvore que cresce gradualmente.
+- **Corte**: Vértices na árvore × vértices fora da árvore.
+- **Aresta segura**: Aresta de peso mínimo conectando a árvore ao resto do grafo.
+- **Complexidade**: \( O(E \log V) \) com heap de Fibonacci.
 
-### Algoritmo de Kruskal:
-- Mantém **floresta** de árvores que se fundem
-- Cortes: componentes conectados atuais
-- Aresta segura: aresta de peso mínimo conectando componentes diferentes
+![Image](https://github.com/user-attachments/assets/d6f0af39-d10b-4894-9081-eb5269377e6d)
+
+### Algoritmo de Kruskal
+- **Estratégia**: Mantém uma floresta de árvores que se fundem.
+- **Cortes**: Componentes conectados atuais.
+- **Aresta segura**: Aresta de peso mínimo conectando duas componentes diferentes.
+- **Complexidade**: \( O(E \log E) \) com union-find eficiente.
 
 ![Image](https://github.com/user-attachments/assets/61076b20-8727-46cd-8e3e-33e9091c7cfd)
-
----
 
 ## ⚡ Complexidade
 
@@ -76,22 +80,33 @@ AGM-GENÉRICA(G, w)
 | Prim | \( O(E \log V) \) | Heap mínimo |
 | Kruskal | \( O(E \log E) \) | Union-Find |
 
----
 
-## 🎯 Aplicações Práticas
+## ⚠️ Casos Especiais
 
-1. **Projeto de redes**: Conexão de pontos com custo mínimo (redes elétricas, telecomunicações)
-2. **Clusterização**: Agrupamento de dados com similaridade máxima
-3. **Roteamento**: Caminhos de custo mínimo em redes
-4. **Approximation algorithms**: Soluções aproximadas para problemas NP-difíceis
+### Pesos Iguais
+- Pode existir múltiplas AGMs
+- Arestas leves não são únicas
+- Algoritmo ainda encontra uma AGM válida
 
----
+### Grafos Não Conexos
+- O conceito se estende para **floresta geradora mínima**
+- Cada componente conexa tem sua própria AGM
 
-## 💡 Observações Importantes
+## 🔗 Relação com Outros Problemas
 
-1. **Optimalidade**: A estratégia gulosa funciona porque o problema tem propriedade de subestrutura ótima
-2. **Unicidade**: Se todos os pesos são distintos, a AGM é única
-3. **Generalização**: Funciona para grafos com pesos negativos também
-4. **Extensões**: Árvore geradora mínima para grafos não conexos → floresta geradora mínima
+### Dualidade
+- A AGM está relacionada ao problema do **caixeiro viajante** (TSP)
+- Serve como base para algoritmos de aproximação
 
-A abordagem gulosa para AGM demonstra como uma estratégia simples mas bem fundamentada pode resolver eficientemente um problema de otimização combinatória fundamental.
+### Extensões
+- **Árvore geradora mínima euclidiana**: Pontos no plano
+- **Árvore de Steiner**: Conectar subconjunto de vértices
+
+
+## 💎 Conclusão
+
+A estratégia gulosa para AGM é notável por:
+1. **Simplicidade conceitual**: Baseada em cortes e arestas leves
+2. **Eficiência prática**: Algoritmos \( O(E \log V) \) implementáveis
+3. **Fundamentação teórica sólida**: Invariante de laço e teorema da aresta segura
+4. **Aplicabilidade ampla**: Redes, clusterização, otimização
