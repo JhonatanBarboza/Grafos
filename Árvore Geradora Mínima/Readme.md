@@ -65,6 +65,8 @@ AGM-GENÉRICA(G, w)
 - Cortes: componentes conectados atuais
 - Aresta segura: aresta de peso mínimo conectando componentes diferentes
 
+![Image](https://github.com/user-attachments/assets/61076b20-8727-46cd-8e3e-33e9091c7cfd)
+
 ---
 
 ## ⚡ Complexidade
