@@ -4,6 +4,13 @@ Repositório dedicado às atividades, implementações e estudos realizados dura
 
 Neste espaço, você encontrará algoritmos clássicos, projetos práticos e outras contribuições voltadas ao aprendizado e aplicação de estruturas baseadas em grafos.
 
+### Visualizações Interativas
+
+Visualização do Algoritmo de Kruskal - mostrando a construção passo a passo da árvore geradora mínima
+
+![Image](https://github.com/user-attachments/assets/61076b20-8727-46cd-8e3e-33e9091c7cfd)
+
+
 ### Conteúdos abordados:
 
 * Representação de grafos (matriz de adjacência, lista de adjacência)
@@ -17,10 +24,6 @@ Neste espaço, você encontrará algoritmos clássicos, projetos práticos e out
 
 Além das implementações em C dos algoritmos, este repositório também inclui visualizações interativas em Python que demonstram o funcionamento dos algoritmos como por exemplo os algoritmos de Prim e Kruskal:
 
-![Image](https://github.com/user-attachments/assets/61076b20-8727-46cd-8e3e-33e9091c7cfd)
 
-Visualização do Algoritmo de Kruskal - mostrando a construção passo a passo da árvore geradora mínima
 
-![Image](https://github.com/user-attachments/assets/d6f0af39-d10b-4894-9081-eb5269377e6d)
 
-Visualização do Algoritmo de Prim - demonstrando a expansão a partir de um vértice inicial
