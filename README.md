@@ -6,7 +6,10 @@ Neste espaço, você encontrará algoritmos clássicos, projetos práticos e out
 
 ### Visualizações Interativas
 
-Visualização do Algoritmo de Kruskal - mostrando a construção passo a passo da árvore geradora mínima
+Além das implementações em C, desenvolvemos **visualizações em Python para diversos algoritmos**:
+
+**Como por exemplo: Algoritmo de Kruskal**  
+Construção passo a passo da árvore geradora mínima através da seleção de arestas por peso crescente.
 
 ![Image](https://github.com/user-attachments/assets/61076b20-8727-46cd-8e3e-33e9091c7cfd)
 
