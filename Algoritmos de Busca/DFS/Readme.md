@@ -2,6 +2,8 @@
 
 A **Busca em Profundidade (DFS)** é um algoritmo de exploração de grafos que prioriza a investigação completa de cada ramo antes de retroceder e explorar alternativas. Diferente da busca em largura (BFS), que avança em camadas, a DFS avança "o máximo possível" em um caminho antes de retroceder.
 
+![Image](https://github.com/user-attachments/assets/4a4544cc-0516-4ff3-b195-c1fde6f4c1e5)
+
 ### Características Principais:
 - **Estratégia**: Explora recursivamente cada vértice e seus vizinhos não visitados, retrocedendo ("backtracking") quando não há mais opções inexploradas.
 - **Estrutura de dados**: Utiliza uma **pilha** (implícita na recursão ou explicitamente implementada) para gerenciar o retrocesso.

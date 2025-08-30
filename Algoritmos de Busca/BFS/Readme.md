@@ -2,6 +2,8 @@
 
 A **Busca em Largura (BFS)** é um algoritmo fundamental para explorar grafos, partindo de um vértice de origem \( s \). Ele descobre sistematicamente todos os vértices alcançáveis a partir de \( s \), calculando a distância mínima (em número de arestas) até cada um e construindo uma **árvore de busca em largura** que representa os caminhos mais curtos.
 
+![Image](https://github.com/user-attachments/assets/68964834-7e1e-40dd-9f35-35241057f2b9)
+
 ### Características Principais:
 - **Funcionamento**: Expande a fronteira de descoberta em "ondas" uniformes, explorando primeiro todos os vértices à mesma distância de \( s \) antes de avançar para distâncias maiores.
 - **Estrutura de Dados**: Utiliza uma **fila** (primeiro a entrar, primeiro a sair) para gerenciar a ordem de exploração, garantindo que vértices sejam processados por níveis de distância.
